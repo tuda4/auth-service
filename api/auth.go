@@ -33,7 +33,7 @@ type CreateAccountRequest struct {
 // @Produce      json
 // @Param        param   body      CreateAccountRequest  true  "params create account"
 // @Success      200  {object}  bool
-// @Router       /signup [post]
+// @Router       /auth/signup [post]
 func (server *Server) createAccount(ctx echo.Context) (err error) {
 	var account CreateAccountRequest
 
@@ -126,7 +126,7 @@ func (server *Server) createToken(ctx echo.Context, accountID uuid.UUID) (rsp To
 // @Produce      json
 // @Param        param   body      LoginRequest  true  "params login account"
 // @Success      200  {object}  response.SuccessResponse[TokenResponse] "ok"
-// @Router       /login [post]
+// @Router       /auth/login [post]
 func (server *Server) login(ctx echo.Context) (err error) {
 	var req LoginRequest
 
