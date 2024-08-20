@@ -41,9 +41,9 @@ func NewServer(config config.Config, store db.Store, taskDistributor worker.Task
 	return server, nil
 }
 
-// @title Mobile Project API
+// @title Auth Service Project API
 // @version 1.0
-// @description Document API for Mobile Project
+// @description Document API for Auth Service Project
 
 // @contact.name API Support
 // @contact.url https://www.instagram.com/imtuda4
@@ -53,7 +53,7 @@ func NewServer(config config.Config, store db.Store, taskDistributor worker.Task
 // @license.url http://www.apache.org/licenses/LICENSE-2.0.html
 
 // @host http://localhost:8080
-// @BasePath /api/web/v1
+// @BasePath  /v1
 // @Accept		json
 // @Produce	json
 func (server *Server) setupRouter() {
@@ -68,12 +68,13 @@ func (server *Server) setupRouter() {
 	e.Use(middleware.LoggerWithConfig(CustomLoggerConfig))
 	// health check
 
-	web := e.Group("/api/web/v1")
+	web := e.Group("/v1")
 
-	web.POST("/login", server.login)
-	web.POST("/signup", server.createAccount)
-	web.POST("/refresh", server.refreshToken)
-	web.GET("/verify", server.verifyEmail)
+	auth := web.Group("/auth")
+	auth.POST("/login", server.login)
+	auth.POST("/signup", server.createAccount)
+	auth.POST("/refresh", server.refreshToken)
+	auth.GET("/verify", server.verifyEmail)
 
 	authRouter := web.Group("/")
 	authRouter.Use(server.authMiddleware)

@@ -25,7 +25,7 @@ func (d *RedisTaskDistributor) DistributeTaskVerifyEmail(
 	opts ...asynq.Option,
 ) error {
 	jsonPayload, err := json.Marshal(payload)
-	fmt.Print(jsonPayload)
+
 	if err != nil {
 		return fmt.Errorf("could not marshal payload: %v", err)
 	}

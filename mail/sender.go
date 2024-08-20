@@ -56,7 +56,7 @@ func (sender *GmailSender) SendEmail(subject string,
 			return fmt.Errorf("failed to attach file %s: %w", attachFile, err)
 		}
 	}
-	fmt.Print(2345678)
+
 	smtpAuth := smtp.PlainAuth("", sender.fromEmailAddress, sender.fromEmailPassword, GmailHost)
 	return e.Send(GmailHostAddress, smtpAuth)
 }

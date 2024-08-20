@@ -1,4 +1,4 @@
-# mb-backend project
+# Auth service project
 
 ## Tech stack
 
@@ -9,7 +9,7 @@
 ## Getting started
 
 ```sh
-// Create .env 
+// Create .env
 cp .env.example app.env
 ```
 
@@ -35,4 +35,3 @@ air -c .air.toml
 ```
 
 Access to api at http://localhost:8080
-
